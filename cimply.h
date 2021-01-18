@@ -4,28 +4,31 @@
 
 #ifndef CIMPLEFETCH_CIMPLY_H
 #define CIMPLEFETCH_CIMPLY_H
+#define CIMPLY_VERSION 0.2
 
 
 // Cimplefetch
+// https://github.com/caverym/cimplefetch
 
 struct cimply {
-	const char *name;
-	const char *home;
-	const char *shell;
-	// const char *desktop;
-	const char *pwd;
+	char *name;
+	char *home;
+	char *pwd;
 	char hostname[1024];
 	unsigned int uid;
 	unsigned int euid;
 
 };
 
-extern int cimple(struct cimply *_info) __THROW;
-// To give Cimply extra user information you may want to print.
-extern int cimple_supply(struct cimply *_info, const char *home, const char *shell) __THROW;
+// Init basic user information into INFO
+extern int cimple_init(struct cimply *_info);
+
+// Give INFO HOME and SHELL
+extern int cimply_init_name(struct cimply *_info);
 
 
 // Proton Caller
+// https://github.com/caverym/Proton-Caller
 
 struct runner {
     const char *version;
@@ -37,11 +40,11 @@ struct runner {
 
 };
 
-extern int set_runner_version(struct runner *str, const char *arg) __THROW;
-extern int set_runner_path(struct runner *str, const char *arg) __THROW;
-extern int set_program(struct runner *str, const char *arg) __THROW;
-extern int set_common(struct runner *str, const char *arg) __THROW;
-extern int set_arguments(struct runner *str, const char *arg) __THROW;
-extern int set_custom(struct runner *str, int i) __THROW;
-
+// saves ARG to respective location in STR
+extern int set_runner_version(struct runner *str, const char *arg);
+extern int set_runner_path(struct runner *str, const char *arg);
+extern int set_runner_program(struct runner *str, const char *arg);
+extern int set_runner_common(struct runner *str, const char *arg);
+extern int set_runner_arguments(struct runner *str, const char *arg);
+extern int set_runner_custom(struct runner *str, int i);
 #endif				//CIMPLEFETCH_CIMPLY_H

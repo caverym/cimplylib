@@ -1,1 +1,7 @@
 .idea
+CMakeLists.txt
+cmake-build-debug
+test.s
+a.out
+tests/a.out
+tests/test.s

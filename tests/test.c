@@ -2,25 +2,21 @@
 // Created by avery on 18/01/2021.
 //
 
+#include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include "../cimply.h"
-#define ENV
-struct cimply info;
+
+struct cimply user;
 
 int main()
 {
-	cimple(&info);
-	cimple_supply(&info, getenv("HOME"), getenv("SHELL"));
+	cimple_init(&user);
 
-	printf("Name:     %s\n", info.name);
-	printf("Home:     %s\n", info.home);
-	printf("Shell:    %s\n", info.shell);
-	// printf("desktop:  %s\n", info.desktop);
-	printf("PWD:      %s\n", info.pwd);
-	printf("Hostname: %s\n", info.hostname);
-	printf("UID:      %u\n", info.uid);
-	printf("EUID:     %u\n", info.euid);
+	printf("Name:     %s\n", user.name);
+	printf("PWD:      %s\n", user.pwd);
+	printf("Hostname: %s\n", user.hostname);
+	printf("UID:      %u\n", user.uid);
+	printf("EUID:     %u\n", user.euid);
 
 	return 0;
 }
