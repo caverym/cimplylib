@@ -31,20 +31,20 @@ extern int cimply_init_name(struct cimply *_info);
 // https://github.com/caverym/Proton-Caller
 
 struct runner {
-    const char *version;
-    const char *path;
-    const char *program;
-    const char *common;
-    const char *arguments;
+    char *version;
+    char *path;
+    char *program;
+    char *common;
+    char *arguments;
     _Bool custom;
 
 };
 
 // saves ARG to respective location in STR
-extern int set_runner_version(struct runner *str, const char *arg);
-extern int set_runner_path(struct runner *str, const char *arg);
-extern int set_runner_program(struct runner *str, const char *arg);
-extern int set_runner_common(struct runner *str, const char *arg);
-extern int set_runner_arguments(struct runner *str, const char *arg);
+extern int set_runner_version(struct runner *str, char *arg);
+extern int set_runner_path(struct runner *str, char *arg);
+extern int set_runner_program(struct runner *str, char *arg);
+extern int set_runner_common(struct runner *str, char *arg);
+extern int set_runner_arguments(struct runner *str, char *arg);
 extern int set_runner_custom(struct runner *str, int i);
 #endif				//CIMPLEFETCH_CIMPLY_H
