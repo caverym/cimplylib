@@ -1,26 +1,24 @@
-LIB=cimply
+LIB=libcimply
 CC=gcc
-CFLAGS=-Wall -g
+CFLAGS=-Wall -g -fPIC
 
 build:
 	gcc $(CFLAGS) -c $(LIB).c -o $(LIB).o
-	ar r $(LIB).a $(LIB).o
-	ranlib $(LIB).a
+	ar rcs $(LIB).a $(LIB).o
+	gcc --shared $(LIB).o -o $(LIB).so
 
 clean:
-	rm $(LIB).a $(LIB).o
+	rm $(LIB).a $(LIB).o $(LIB).so
 
 test:
 	gcc $(CFLAGS) -o printall tests/test.c cimply.a
 	./printall
 	rm printall
 
-env:
-	$(CC) $(CFLAGS) -Dcimple_stdlib $(LIB).c -o $(LIB).o
-	ar r $(LIB).a $(LIB).o
-	ranlib $(LIB).a
+install:
+	install -Dm 744 $(LIB).so /usr/lib/$(LIB).so
+	install -Dm 744 $(LIB).h /usr/include/$(LIB).h
 
-debug:
-	gcc $(CFLAGS) -o printall tests/test.c cimply.a
-	gdb ./printall
-	rm printall
+uninstall:
+	rm /usr/lib/$(LIB).so
+	rm /usr/include/$(LIB).h

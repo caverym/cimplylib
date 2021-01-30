@@ -4,7 +4,7 @@
 
 #include <unistd.h>
 #include <stdio.h>
-#include "../cimply.h"
+#include <libcimply.h>
 
 struct cimply user;
 

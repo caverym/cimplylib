@@ -4,8 +4,8 @@
 
 #ifndef CIMPLEFETCH_CIMPLY_H
 #define CIMPLEFETCH_CIMPLY_H
-#define CIMPLY_VERSION 0.3
-
+#define CIMPLY_VERSION 0.4
+#include <stdbool.h>
 
 // Cimplefetch
 // https://github.com/caverym/cimplefetch
@@ -44,7 +44,7 @@ struct runner {
     char *program;
     char *common;
     char *arguments;
-    _Bool custom;
+    bool custom;
 
     char *ar1;
     char *ar2;

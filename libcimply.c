@@ -1,8 +1,9 @@
 //
 // Created by avery on 17/01/2021.
 //
-#include "cimply.h"
+#include "libcimply.h"
 #include <unistd.h>
+
 
 
 // Cimplefetch
