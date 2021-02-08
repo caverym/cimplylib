@@ -3,15 +3,16 @@ CC=gcc
 CFLAGS=-Wall -g -fPIC
 
 build:
-	gcc $(CFLAGS) -c $(LIB).c -o $(LIB).o
+	$(CC) $(CFLAGS) -c $(LIB).c -o $(LIB).o
 	ar rcs $(LIB).a $(LIB).o
+	ranlib $(LIB).a
 	gcc --shared $(LIB).o -o $(LIB).so
 
 clean:
 	rm $(LIB).a $(LIB).o $(LIB).so
 
 test:
-	gcc $(CFLAGS) -o printall tests/test.c cimply.a
+	$(CC) $(CFLAGS) -o printall tests/test.c cimply.a
 	./printall
 	rm printall
 
